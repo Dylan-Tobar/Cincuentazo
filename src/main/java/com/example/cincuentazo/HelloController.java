@@ -594,7 +594,7 @@ public class GameController {
                 .toLowerCase();
 
 
-        return "/org/example/_0zo/View/imagenes/"
+        return "/org/example/cincuentazo/View/imagenes/"
                 + rank
                 + "_"
                 + suit
