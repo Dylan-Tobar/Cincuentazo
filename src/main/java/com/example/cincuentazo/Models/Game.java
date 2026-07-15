@@ -55,9 +55,10 @@ public class Game {
     }
 
     /**
-     * Ejecuta la jugada de un jugador (HU-3 + HU-4): valida la regla
-     * principal, mueve la carta a la mesa y roba una carta nueva del
-     * mazo para reponer la mano.
+     * Ejecuta la jugada de un jugador (HU-3): valida la regla principal
+     * y mueve la carta a la mesa. A partir de este punto el jugador
+     * queda con 3 cartas en mano; para completar su turno debe robar
+     * una carta con {@link #drawCard(Player)} (HU-4).
      *
      * @param player   jugador que juega
      * @param position posición (0-3) de la carta dentro de su mano
@@ -79,15 +80,18 @@ public class Game {
 
         player.useCard(position);
         table.plus(card, value);
-        takeCard(player);
     }
 
     /**
-     * Roba una carta del mazo para el jugador; si el mazo está vacío,
-     * recicla las cartas ya jugadas en la mesa (excepto la última) antes
-     * de intentarlo de nuevo.
+     * Roba una carta del mazo para el jugador y así completa su turno
+     * (HU-4): si el mazo está vacío, recicla antes las cartas ya
+     * jugadas en la mesa (excepto la última) antes de intentarlo de
+     * nuevo.
+     *
+     * @param player jugador que roba la carta (debe tener 3 cartas en
+     *               mano tras haber jugado con {@link #playCard})
      */
-    private void takeCard(Player player) {
+    public void drawCard(Player player) {
         try {
             player.receiveCard(deck.distributeC());
         } catch (EmptyDeck e) {

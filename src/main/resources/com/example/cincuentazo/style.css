@@ -1,8 +1,17 @@
+/* Tipografía general: Montserrat. NO se usa @font-face aquí a propósito:
+   ese mecanismo de la CSS de JavaFX es conocido por ser poco confiable
+   (internamente llama a Font.loadFont() y si falla solo deja un warning
+   en consola sin más contexto, incluso con archivos .ttf perfectamente
+   válidos). En su lugar, la fuente se registra por código con
+   Font.loadFont() en HelloApplication.start() ANTES de cargar cualquier
+   FXML/CSS; una vez registrada, JavaFX la resuelve por nombre de familia
+   normalmente, igual que si estuviera instalada en el sistema. */
 .root-pane {
     -fx-background-image: url("imagenes/fondo.png");
     -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
+    -fx-font-family: 'Montserrat';
 }
 
 .title-label {
@@ -122,4 +131,36 @@
 .avatar-ring {
     -fx-stroke: #d4a94a;
     -fx-stroke-width: 3px;
+}
+/* ===================== Distribución en cruz (BorderPane) ===================== */
+
+/* Zona genérica de cada jugador (Norte/Oeste/Este/Sur). El efecto de
+   glow de turno (microseñal) se aplica por código sobre este nodo. */
+.player-zone {
+    -fx-padding: 6px;
+}
+
+/* Pila de descartes y mazo de robo, etiqueta compartida */
+.pile-caption {
+    -fx-font-size: 12px;
+    -fx-text-fill: #eafaf1;
+    -fx-font-weight: bold;
+}
+
+/* Mazo de robo (izquierda del centro). Boca abajo, listo para HU-4. */
+.draw-pile {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 2);
+    -fx-opacity: 0.55;
+}
+
+/* Se activa por código (setDrawPileEnabled) cuando el humano ya jugó su
+   carta y debe robar para cerrar el turno: resalta y admite clic. */
+.draw-pile-active {
+    -fx-opacity: 1.0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255,209,102,0.85), 16, 0.35, 0, 0);
+}
+.draw-pile-active:hover {
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
 }
