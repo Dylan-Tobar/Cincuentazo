@@ -1,0 +1,125 @@
+.root-pane {
+    -fx-background-image: url("imagenes/fondo.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.title-label {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffd166;
+}
+
+.subtitle-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #eafaf1;
+}
+
+.radio-option {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+}
+.radio-option .radio {
+    -fx-background-color: #ffffff;
+}
+
+.primary-button {
+    -fx-background-color: #ffd166;
+    -fx-text-fill: #0b3d2e;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10 26 10 26;
+    -fx-cursor: hand;
+}
+.primary-button:hover {
+    -fx-background-color: #ffc233;
+}
+
+.error-label {
+    -fx-text-fill: #ff6b6b;
+    -fx-font-size: 13px;
+}
+
+.top-bar {
+    -fx-background-color: rgba(0,0,0,0.25);
+    -fx-background-radius: 0 0 14px 14px;
+}
+
+.turn-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.timer-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #d5f2e3;
+}
+
+.table-area {
+    -fx-background-color: transparent;
+    -fx-padding: 16px 30px;
+}
+
+/* Label de la suma, ahora centrado ENCIMA del escudo (ver sumBadgeContainer) */
+.sum-label {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3a220a;
+}
+
+.message-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ff9f9f;
+    -fx-background-color: rgba(0,0,0,0.3);
+    -fx-background-radius: 8px;
+    -fx-padding: 4 12 4 12;
+}
+
+.hand-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #eafaf1;
+}
+
+.hand-card {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 6, 0, 0, 2);
+}
+.hand-card:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.opponent-name {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.opponent-box {
+    -fx-background-color: rgba(0,0,0,0.25);
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 14px;
+}
+
+.opponent-box-eliminated {
+    -fx-background-color: rgba(0,0,0,0.4);
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 14px;
+    -fx-opacity: 0.5;
+}
+
+/* Contenedor del avatar circular de cada máquina (imagen + anillo) */
+.avatar-circle {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 5, 0, 0, 2);
+}
+
+/* Anillo dorado sobre el avatar. AJUSTA -fx-stroke aquí si el dorado no
+   combina con el borde de tu mesa o con shield.png (usa el mismo hex,
+   o uno cercano tomado con un gotero de color sobre esas imágenes). */
+.avatar-ring {
+    -fx-stroke: #d4a94a;
+    -fx-stroke-width: 3px;
+}
