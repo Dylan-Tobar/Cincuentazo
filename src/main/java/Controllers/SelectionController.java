@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,9 +18,9 @@ import java.io.IOException;
  */
 public class SelectionController {
 
-    @FXML private RadioButton rb1;
-    @FXML private RadioButton rb2;
-    @FXML private RadioButton rb3;
+    @FXML private ToggleButton rb1;
+    @FXML private ToggleButton rb2;
+    @FXML private ToggleButton rb3;
     @FXML private Label lblError;
 
     /**

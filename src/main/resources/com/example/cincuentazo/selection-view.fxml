@@ -1,31 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="24" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.cincuentazo.Controllers.SelectionController"
-      stylesheets="@style.css" styleClass="root-pane">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="24" styleClass="root-pane, selection-frame" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.cincuentazo.Controllers.SelectionController">
     <padding>
-        <Insets bottom="40" left="40" right="40" top="40"/>
+        <Insets bottom="40" left="40" right="40" top="40" />
     </padding>
 
-    <Label styleClass="title-label" text="Cincuentazo"/>
-    <Label styleClass="subtitle-label" text="¿Contra cuántos jugadores máquina quieres jugar?"/>
+    <Label styleClass="title-label" text="Cincuentazo" />
+    <Label styleClass="subtitle-label" text="¿Contra cuántos jugadores máquina quieres jugar?" />
 
-    <HBox alignment="CENTER" spacing="18">
+    <HBox alignment="CENTER" spacing="40">
         <fx:define>
-            <ToggleGroup fx:id="machinesGroup"/>
+            <ToggleGroup fx:id="machinesGroup" />
         </fx:define>
-        <RadioButton fx:id="rb1" styleClass="radio-option" text="1 Máquina" toggleGroup="$machinesGroup"/>
-        <RadioButton fx:id="rb2" styleClass="radio-option" text="2 Máquinas" toggleGroup="$machinesGroup"/>
-        <RadioButton fx:id="rb3" styleClass="radio-option" text="3 Máquinas" toggleGroup="$machinesGroup"/>
+        <VBox alignment="CENTER" spacing="4">
+            <ToggleButton fx:id="rb1" styleClass="radio-option">
+                <graphic>
+                    <ImageView fitHeight="230" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@imagenes/maquina1.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            <toggleGroup>
+               <ToggleGroup fx:id="machinesGroup" />
+            </toggleGroup>
+            </ToggleButton>
+            <Label styleClass="machine-number" text="1MAQUINA" />
+        </VBox>
+        <VBox alignment="CENTER" spacing="4">
+            <ToggleButton fx:id="rb2" styleClass="radio-option" toggleGroup="$machinesGroup">
+                <graphic>
+                    <ImageView fitHeight="230" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@imagenes/maquina2.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </ToggleButton>
+            <Label styleClass="machine-number" text=" 2 MAQUINAS" />
+        </VBox>
+        <VBox alignment="CENTER" spacing="4">
+            <ToggleButton fx:id="rb3" styleClass="radio-option" toggleGroup="$machinesGroup">
+                <graphic>
+                    <ImageView fitHeight="230" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@imagenes/maquina3.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </ToggleButton>
+            <Label styleClass="machine-number" text="3 MAQUINAS" />
+        </VBox>
     </HBox>
 
-    <Button fx:id="btnStart" onAction="#handleStartGame" styleClass="primary-button" text="Iniciar juego"/>
-    <Label fx:id="lblError" styleClass="error-label"/>
+    <Button fx:id="btnStart" onAction="#handleStartGame" styleClass="primary-button" text="Iniciar juego" />
+    <Label fx:id="lblError" styleClass="error-label" />
 </VBox>

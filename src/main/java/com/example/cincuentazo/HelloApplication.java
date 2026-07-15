@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
         registerFonts();
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("selection-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 520, 380);
+        Scene scene = new Scene(fxmlLoader.load(), 900, 620);
         stage.setTitle("Cincuentazo");
         stage.setScene(scene);
         stage.show();
@@ -40,13 +40,22 @@ public class HelloApplication extends Application {
         loadFont("fonts/Montserrat-Regular.ttf");
         loadFont("fonts/Montserrat-Bold.ttf");
         loadFont("fonts/Montserrat-SemiBold.ttf");
+        // Fuente "de casino" para números/labels de impacto (Suma, Turno).
+        loadFont("fonts/CinzelDecorative-Bold.ttf");
+        // Fuente script elegante para el título "Cincuentazo" (ver .title-label).
+        loadFont("fonts/MonteCarlo-Regular.ttf");
     }
 
     private void loadFont(String resourcePath) {
-        try (InputStream in = HelloApplication.class.getResourceAsStream(resourcePath)) {
+        // Ruta absoluta (con "/" inicial): se resuelve desde la raíz del classpath
+        // (src/main/resources), no desde el paquete de esta clase. Así el archivo
+        // puede seguir estando en src/main/resources/fonts sin moverlo a
+        // src/main/resources/com/example/cincuentazo/fonts.
+        String absolutePath = "/" + resourcePath;
+        try (InputStream in = HelloApplication.class.getResourceAsStream(absolutePath)) {
             if (in == null) {
                 System.err.println("No se encontró el recurso de fuente: " + resourcePath
-                        + " (revisa que el archivo esté en src/main/resources/com/example/cincuentazo/" + resourcePath + ")");
+                        + " (revisa que el archivo esté en src/main/resources/" + resourcePath + ")");
                 return;
             }
             Font loaded = Font.loadFont(in, 12);

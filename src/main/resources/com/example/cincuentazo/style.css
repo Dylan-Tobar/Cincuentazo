@@ -14,36 +14,84 @@
     -fx-font-family: 'Montserrat';
 }
 
+/* Marco ornamentado (doble borde rojo + dorado) para la pantalla de
+   selección, imitando el filo de mesa de casino del mockup. */
+.selection-frame {
+    -fx-border-color: #7a1620, #d4a94a;
+    -fx-border-width: 12, 3;
+    -fx-border-insets: 0, 10;
+    -fx-border-radius: 30, 22;
+}
+
 .title-label {
-    -fx-font-size: 40px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffd166;
+    -fx-font-family: 'MonteCarlo', 'Cinzel Decorative', 'Montserrat';
+    -fx-font-size: 92px;
+    -fx-text-fill: linear-gradient(to bottom, #fff8e1, #ffd166 45%, #b8860b 85%, #8a6208);
+    -fx-effect: dropshadow(gaussian, rgba(255,209,102,0.6), 22, 0.45, 0, 0);
+}
+.title-label > .text {
+    -fx-stroke: #8a6208;
+    -fx-stroke-width: 1.4px;
 }
 
 .subtitle-label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #eafaf1;
+    -fx-font-family: 'Cinzel Decorative', 'Montserrat';
+    -fx-font-size: 17px;
+    -fx-text-fill: #f0d99a;
 }
 
+/* Selector de cantidad de máquinas: ToggleButton SIN fondo ni borde de
+   caja (la imagen ya es transparente, así que flota directo sobre el
+   fieltro). El estado :selected se marca agrandando un poco la imagen
+   y con un glow dorado detrás, no con una caja. */
 .radio-option {
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6px;
+    -fx-cursor: hand;
 }
-.radio-option .radio {
-    -fx-background-color: #ffffff;
+.radio-option:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255,209,102,0.55), 20, 0.3, 0, 0);
+}
+.radio-option:selected {
+    -fx-effect: dropshadow(gaussian, rgba(255,209,102,0.9), 30, 0.45, 0, 0);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+/* Número (1/2/3) debajo de cada tragamonedas, indicando cuál elegir. */
+.machine-number {
+    -fx-font-family: 'Cinzel Decorative', 'Montserrat';
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to bottom, #fff3c4, #ffd166 55%, #b8860b);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.65), 4, 0.4, 0, 1);
 }
 
 .primary-button {
-    -fx-background-color: #ffd166;
-    -fx-text-fill: #0b3d2e;
+    -fx-background-color: #7a1620, linear-gradient(to bottom, #ffe9a8, #ffd166 60%, #e0a92e);
+    -fx-background-insets: 0, 6;
+    -fx-background-radius: 90px, 84px;
+    -fx-text-fill: #3a220a;
+    -fx-font-family: 'Cinzel Decorative', 'Montserrat';
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-background-radius: 8px;
-    -fx-padding: 10 26 10 26;
+    -fx-border-color: #d4a94a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 90px;
+    -fx-min-width: 150px;
+    -fx-min-height: 150px;
+    -fx-max-width: 150px;
+    -fx-max-height: 150px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-content-display: center;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0, 0, 4);
 }
 .primary-button:hover {
-    -fx-background-color: #ffc233;
+    -fx-background-color: #7a1620, linear-gradient(to bottom, #fff3c4, #ffc233 60%, #d99a1e);
+    -fx-effect: dropshadow(gaussian, rgba(255,209,102,0.8), 20, 0.45, 0, 0);
 }
 
 .error-label {
@@ -52,14 +100,23 @@
 }
 
 .top-bar {
-    -fx-background-color: rgba(0,0,0,0.25);
+    -fx-background-color: rgba(0,0,0,0.35);
     -fx-background-radius: 0 0 14px 14px;
+    -fx-border-color: transparent transparent #ffd166 transparent;
+    -fx-border-width: 0 0 2 0;
 }
 
 .turn-label {
-    -fx-font-size: 20px;
+    -fx-font-family: 'Cinzel Decorative', 'Montserrat';
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
+    -fx-line-spacing: -6px;
+    -fx-text-fill: linear-gradient(to bottom, #fff3c4, #ffd166 60%, #c8912e);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 4, 0.3, 0, 1);
+}
+.turn-label > .text {
+    -fx-stroke: #c8912e;
+    -fx-stroke-width: 0.6px;
 }
 
 .timer-label {
@@ -72,11 +129,21 @@
     -fx-padding: 16px 30px;
 }
 
-/* Label de la suma, ahora centrado ENCIMA del escudo (ver sumBadgeContainer) */
+/* Label de la suma, ahora debajo del escudo (no encima). Un poco más
+   grande que .pile-caption (Mazo/Descartes), tipografía "de casino"
+   (Cinzel Decorative, con fallback a Montserrat si no está cargada) y
+   color dorado que contrasta contra el verde de la mesa. */
 .sum-label {
-    -fx-font-size: 26px;
+    -fx-font-family: 'Cinzel Decorative', 'Montserrat';
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-text-fill: #3a220a;
+    -fx-line-spacing: -6px;
+    -fx-text-fill: linear-gradient(to bottom, #fff3c4, #ffd166 55%, #b8860b);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.65), 5, 0.4, 0, 1);
+}
+.sum-label > .text {
+    -fx-stroke: #b8860b;
+    -fx-stroke-width: 0.6px;
 }
 
 .message-label {
@@ -142,7 +209,7 @@
 
 /* Pila de descartes y mazo de robo, etiqueta compartida */
 .pile-caption {
-    -fx-font-size: 12px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eafaf1;
     -fx-font-weight: bold;
 }
