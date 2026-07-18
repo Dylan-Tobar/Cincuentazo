@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * @autor Dylan Tobar, Ricardo Hallado, Alejandro Arias
  * Representa el mazo de cartas del juego (52 cartas, sin comodines: del 2
  * al 14 -donde 11=J, 12=Q, 13=K, 14=A- en los cuatro palos).
  */
@@ -37,7 +38,6 @@ public class Deck {
 
     /**
      * Retira y entrega la carta superior del mazo.
-     *
      * @return la carta repartida
      * @throws EmptyDeck si el mazo no tiene cartas disponibles
      */
@@ -51,7 +51,6 @@ public class Deck {
     /**
      * Devuelve cartas usadas (jugadas o de un jugador eliminado) al mazo
      * y lo vuelve a mezclar, para que sigan estando disponibles.
-     *
      * @param discarC cartas a reincorporar al mazo
      */
     public void reuseCards(ArrayList<Card> discarC) {

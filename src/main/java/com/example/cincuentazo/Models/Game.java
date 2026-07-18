@@ -3,13 +3,9 @@ package com.example.cincuentazo.Models;
 import java.util.ArrayList;
 
 /**
+ * @autor Dylan Tobar, Ricardo Hallado, Alejandro Arias
  * Orquesta la lógica central de una partida de Cincuentazo: reparto
  * inicial, turnos, jugadas, eliminaciones y condición de victoria.
- * <p>
- * Esta clase pertenece a la capa de Modelo (MVC) y no depende de JavaFX;
- * toda la manipulación de hilos relacionada con la interfaz (turno de la
- * máquina, temporizador) vive en el Controlador, que es quien conoce el
- * hilo de UI y debe usar {@code Platform.runLater(...)} para actualizarla.
  */
 public class Game {
     private final ArrayList<Player> players;
@@ -20,7 +16,6 @@ public class Game {
     /**
      * Crea una partida nueva con la lista de jugadores dada. El primer
      * jugador de la lista (índice 0) es quien inicia el juego.
-     *
      * @param players lista de jugadores participantes (humano + máquinas)
      */
     public Game(ArrayList<Player> players) {
@@ -55,17 +50,11 @@ public class Game {
     }
 
     /**
-     * Ejecuta la jugada de un jugador (HU-3): valida la regla principal
-     * y mueve la carta a la mesa. A partir de este punto el jugador
-     * queda con 3 cartas en mano; para completar su turno debe robar
-     * una carta con {@link #drawCard(Player)} (HU-4).
-     *
+     * Ejecuta la jugada de un jugador.
      * @param player   jugador que juega
      * @param position posición (0-3) de la carta dentro de su mano
-     * @param aceValue si la carta es un As, valor a usar (1 o 10); se
-     *                 ignora para las demás cartas
-     * @throws InvalidPlay si no hay carta en esa posición o la jugada
-     *                      superaría 50 en la mesa
+     * @param aceValue si la carta es un As, valor a usar (1 o 10); se ignora para las demás cartas
+     * @throws InvalidPlay si no hay carta en esa posición o la jugada superaría 50 en la mesa
      */
     public void playCard(Player player, int position, int aceValue) throws InvalidPlay {
         Card card = player.getHand()[position];
@@ -83,13 +72,8 @@ public class Game {
     }
 
     /**
-     * Roba una carta del mazo para el jugador y así completa su turno
-     * (HU-4): si el mazo está vacío, recicla antes las cartas ya
-     * jugadas en la mesa (excepto la última) antes de intentarlo de
-     * nuevo.
-     *
-     * @param player jugador que roba la carta (debe tener 3 cartas en
-     *               mano tras haber jugado con {@link #playCard})
+     * Roba una carta del mazo para el jugador y así completa su turno.
+     * @param player jugador que roba la carta (debe tener 3 cartas en mano tras haber jugado con {@link #playCard})
      */
     public void drawCard(Player player) {
         try {
@@ -107,9 +91,7 @@ public class Game {
 
     /**
      * Evalúa si un jugador ya no tiene ninguna jugada posible dado el
-     * estado actual de la mesa (HU-5); si es así, lo elimina y envía sus
-     * cartas de vuelta al mazo.
-     *
+     * estado actual de la mesa.
      * @param player jugador a evaluar
      */
     public void checkElimination(Player player) {
@@ -153,7 +135,6 @@ public class Game {
     /**
      * Evalúa la condición de fin de juego (HU-6): si solo queda un
      * jugador activo, lo devuelve como ganador.
-     *
      * @return el único jugador activo, o null si aún hay más de uno en juego
      */
     public Player checkWinner() {

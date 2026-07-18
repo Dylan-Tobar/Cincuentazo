@@ -1,25 +1,15 @@
 package com.example.cincuentazo.Models;
 
 /**
+ * @autor Dylan Tobar, Ricardo Hallado, Alejandro Arias
  * Representa una carta de la baraja utilizada en Cincuentazo.
- * <p>
- * Cada carta tiene un número (2 a 14, donde 11=J, 12=Q, 13=K, 14=A) y un
- * palo. El valor que aporta a la suma de la mesa depende del número,
- * según las reglas del juego:
- * <ul>
- *     <li>2 al 8 y 10: suman su propio número.</li>
- *     <li>9: no suma ni resta (valor 0).</li>
- *     <li>J, Q, K: restan 10.</li>
- *     <li>A: suma 1 o 10, según convenga al jugador.</li>
- * </ul>
  */
 public class Card {
     private final int number;
     private final String suit;
 
     /**
-     * Crea una nueva carta.
-     *
+     * Crea una nueva carta
      * @param number número de la carta (2-14, donde 11=J, 12=Q, 13=K, 14=A)
      * @param suit   palo de la carta (Diamantes, Treboles, Corazones, Picas)
      */

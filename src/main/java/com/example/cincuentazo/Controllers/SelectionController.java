@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
+ * @autor Dylan Tobar, Ricardo Hallado, Alejandro Arias
  * Controlador de la pantalla inicial (HU-1): permite al jugador humano
  * elegir contra cuántos jugadores máquina (1, 2 o 3) quiere jugar, y
  * arranca la partida.
@@ -25,8 +26,7 @@ public class SelectionController {
 
     /**
      * Se dispara al presionar "Iniciar juego". Valida la selección y, si
-     * es correcta, carga la vista del juego y arranca la partida.
-     *
+     * es correcta, carga la vista del juego y arranca la partida
      * @param event evento de clic del botón
      */
     @FXML
@@ -57,7 +57,6 @@ public class SelectionController {
     /**
      * Determina cuántas máquinas eligió el usuario a partir de los radio
      * buttons.
-     *
      * @return 1, 2 o 3 según lo seleccionado
      * @throws IllegalArgumentException si no se seleccionó ninguna opción
      */
