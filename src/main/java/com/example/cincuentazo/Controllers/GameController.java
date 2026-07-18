@@ -28,27 +28,12 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Controlador de la pantalla principal del juego. Conecta la vista
- * (game-view.fxml) con el modelo ({@link Game}), y es responsable de:
- * <ul>
- *     <li>Manejar el clic del jugador humano sobre sus cartas y sobre
- *     el mazo de robo.</li>
- *     <li>Disparar el turno de las máquinas en hilos separados, para no
- *     congelar la interfaz mientras "piensan" y "roban" (Hilo 1).</li>
- *     <li>Correr un temporizador de partida en un segundo hilo,
- *     independiente del anterior (Hilo 2).</li>
- *     <li>Refrescar la interfaz después de cada cambio en el modelo,
- *     incluyendo la microseñal de turno (efecto glow).</li>
- * </ul>
+ * @autor Dylan Tobar, Ricardo Hallado, Alejandro Arias
+ * Controlador de la pantalla principal del juego.
  */
 public class GameController {
 
     private static final int MIN_MACHINE_DELAY_MS = 2000;
-    // NOTA: se acorta el techo a 3000ms (en vez de 4000ms). Sigue
-    // cumpliendo el "entre 2 y 4 segundos" de las HU-3/HU-4 (es un
-    // subrango válido dentro de ese intervalo), pero evita que un turno
-    // de máquina se sienta larguísimo al sumar las dos fases (pensar +
-    // tomar carta), que en el peor caso ahora son 3+3=6s en vez de 4+4=8s.
     private static final int MAX_MACHINE_DELAY_MS = 3000;
 
     /** Duración de la microseñal de turno (glow), en segundos. */
@@ -88,7 +73,6 @@ public class GameController {
 
     /**
      * Arranca una partida nueva.
-     *
      * @param numberOfMachines cantidad de rivales máquina (1 a 3), elegida en la pantalla anterior
      */
     public void startGame(int numberOfMachines) {
@@ -312,7 +296,6 @@ public class GameController {
      * Hilo 1 (segunda fase): simula el tiempo que tarda la máquina en
      * tomar una carta del mazo tras jugar (HU-4), también entre 2 y 4
      * segundos, y finaliza el turno.
-     *
      * @param machine jugador máquina que debe robar carta
      */
     private void startMachineDrawThread(Player machine) {
